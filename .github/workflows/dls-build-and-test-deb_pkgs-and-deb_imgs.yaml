@@ -182,6 +182,9 @@ jobs:
     - name: Init test environemtnt
       run: |
         sudo apt install libcairo2-dev libgirepository1.0-dev
+        if [[ ${{ matrix.ubuntu_version }} == "ubuntu24" ]]; then
+            sudo apt install libopencv-dev
+        fi
         if [ -d "$HOME/.virtualenvs" ]; then
           echo "Directory $HOME/.virtualenvs exists - removing it"
           rm -rf $HOME/.virtualenvs
@@ -197,11 +200,6 @@ jobs:
     - name: 🚀 Run tests
       id: run_tests
       run: |
-        . /etc/os-release
-        if [ "$VERSION_ID" == "24.04" ]; then
-          echo "Ubuntu 24 detected installing libopencv-dev"
-          sudo apt-get -y install libopencv-dev
-        fi
         cd $DLS_REL_PATH/tests
         mkdir functional_tests_results
         cd functional_tests_results
@@ -212,10 +210,6 @@ jobs:
         echo "Starting to execute FUNCTIONAL TESTS main sctipt"
         source $HOME/.virtualenvs/dlstreamer/bin/activate
         ./run_tests.sh --models-path=${{ env.MODELS_PATH }} --video-examples-path=${{ env.VIDEO_INPUTS_PATH }} --test-configs="${{ env.TEST_CONFIGS }}" --results-path="$DLS_TESTS_RESULTS_PATH" --report-name=functional_tests_${{ matrix.runner_print_label }}_on_host_${{ matrix.ubuntu_version }}_results --on-host
-        if [ "$VERSION_ID" == "24.04" ]; then
-          echo "Ubuntu 24 detected removing libopencv-dev"
-          sudo apt-get -y remove libopencv-dev
-        fi
 
     - name: Upload test results
       uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 #4.6.2
