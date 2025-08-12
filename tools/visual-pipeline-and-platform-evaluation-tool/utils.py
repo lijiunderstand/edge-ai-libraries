@@ -630,3 +630,15 @@ def run_pipeline_and_extract_metrics(
             logger.error(f"Pipeline execution error: {e}")
             continue
     return results
+
+def is_yolov10_model(model_path: str) -> bool:
+    """
+    Checks if the given model path corresponds to a YOLO v10 model.
+
+    Args:
+        model_path (str): Path to the model file.
+
+    Returns:
+        bool: True if the model is a YOLO v10 model, False otherwise.
+    """
+    return "yolov10" in model_path.lower()

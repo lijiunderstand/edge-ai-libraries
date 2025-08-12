@@ -5,7 +5,7 @@ from pathlib import Path
 import struct
 
 from gstpipeline import GstPipeline
-from utils import UINT8_DTYPE_SIZE, VIDEO_STREAM_META_PATH
+from utils import UINT8_DTYPE_SIZE, VIDEO_STREAM_META_PATH, is_yolov10_model
 
 
 class SmartNVRPipeline(GstPipeline):
@@ -273,7 +273,7 @@ class SmartNVRPipeline(GstPipeline):
 
             # Set inference config parameter for GPU if using YOLOv10
             ie_config_parameter = ""
-            if parameters["object_detection_device"] == "GPU" and "yolov10" in constants['OBJECT_DETECTION_MODEL_PATH']:
+            if parameters["object_detection_device"] == "GPU" and is_yolov10_model(constants['OBJECT_DETECTION_MODEL_PATH']):
                 ie_config_parameter = "ie-config=GPU_DISABLE_WINOGRAD_CONVOLUTION=YES"
 
             streams += self._inference_stream_decode_detect_track.format(
