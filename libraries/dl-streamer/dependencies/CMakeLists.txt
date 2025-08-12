@@ -4,7 +4,3 @@ project(dependencies NONE)
 include("ffmpeg.cmake")
 include("opencv.cmake")
 include("gstreamer.cmake")
-
-
-
-

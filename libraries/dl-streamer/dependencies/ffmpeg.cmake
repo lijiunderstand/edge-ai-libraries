@@ -3,8 +3,9 @@ include(ExternalProject)
 # When changing version, you will also need to change the download hash
 set(DESIRED_VERSION 6.1.1)
 
+# Verify the version of ffmpeg libraries over at https://ffmpeg.org/download.html
 find_package(PkgConfig)
-pkg_check_modules(LIBAV libavformat=${DESIRED_VERSION} libavcodec=${DESIRED_VERSION} libswscale=${DESIRED_VERSION} libavutil=${DESIRED_VERSION})
+pkg_check_modules(LIBAV libavformat>=60.16.100 libavcodec>=60.31.102 libswscale>=7.5.100 libavutil>=58.29.100)
 
 if (LIBAV_FOUND)
     return()

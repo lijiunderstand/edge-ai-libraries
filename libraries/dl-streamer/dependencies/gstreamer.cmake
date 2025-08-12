@@ -3,12 +3,12 @@ include(ExternalProject)
 # When changing version, you will also need to change the download hash
 set(DESIRED_VERSION 1.26.1)
 
-find_package(PkgConfig)
-pkg_check_modules(GSTREAMER gstreamer-1.0=${DESIRED_VERSION})
+# find_package(PkgConfig)
+# pkg_check_modules(GSTREAMER gstreamer-1.0=${DESIRED_VERSION})
 
-if (GSTREAMER_FOUND)
-    return()
-endif()
+# if (GSTREAMER_FOUND)
+#     return()
+# endif()
 
 ExternalProject_Add(
     gstreamer

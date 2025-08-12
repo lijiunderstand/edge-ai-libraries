@@ -25,7 +25,7 @@ export PKG_CONFIG_PATH 			:= ${PROJECT_DIRECTORY}/${DEPENDENCY_DIR}/install/lib/
 export LIBVA_DRIVER_NAME 		:= iHD
 export LIBVA_DRIVERS_PATH 		:= /usr/lib/x86_64-linux-gnu/dri
 export GST_VA_ALL_DRIVERS 		:= 1
-export GST_PLUGIN_FEATURE_RANK := ${GST_PLUGIN_FEATURE_RANK},ximagesink:MAX
+export GST_PLUGIN_FEATURE_RANK 	:= ${GST_PLUGIN_FEATURE_RANK},ximagesink:MAX
 
 
 .PHONY: dependencies
