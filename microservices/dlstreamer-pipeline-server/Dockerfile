@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=intel/dlstreamer:EAL1.2.RC2_2025.1.RC2-ubuntu22
+ARG BASE_IMAGE=intel/dlstreamer:2025.1.2-ubuntu22
 FROM ${BASE_IMAGE} AS gstudfloader-builder
 
 USER root
@@ -315,7 +315,7 @@ RUN apt update && \
     fi && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
-    
+
 RUN pip3 install --no-cache-dir --upgrade openvino==2025.2.0 openvino-telemetry==2025.2.0
 
 USER ${USER}
