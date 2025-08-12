@@ -88,7 +88,10 @@ services:
     volumes:
       # - "../resources:/home/pipeline-server/resources/"
       - "/home/intel/ashish/evam_evi_tests:/home/pipeline-server/resources"
-      - "../configs/default/config.json:/home/pipeline-server/config.json"
+      - "../configs/default/config_cpu.json:/home/pipeline-server/config.json"
+      # - "../configs/default/config_cpu_warehouse.json:/home/pipeline-server/config.json"
+      # - "../configs/default/config.json:/home/pipeline-server/config.json"
+      # - "../configs/default/config_warehouse.json:/home/pipeline-server/config.json"
       - vol_pipeline_root:/var/cache/pipeline_root:uid=1999,gid=1999
       - "../certificates:/MqttCerts:ro"
       - "../Certificates/ssl_server/:/run/secrets/DLStreamerPipelineServer_Server:ro"
